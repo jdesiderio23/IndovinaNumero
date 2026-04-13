@@ -11,7 +11,16 @@ class View(object):
     def caricaInterfaccia(self):
         self._titolo = ft.Text("Indovina il numero",
                                color="blue", size=24)
-
+        self._txtNmax = ft.TextField(label = "Numero Max",
+                                     value = self._controller.getNmax(),
+                                     disabled = True
+                                     )
+        self._txtTmax = ft.TextField(label = "Num tentativi max",
+                                     value = self._controller.getTmax(),
+                                     disabled = True
+                                     )
+        self._txtT = ft.TextField(label = "Tentativi rimanenti",
+                                  disabled = True )
         self._page.update()
 
     def setController(self,controller):

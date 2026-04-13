@@ -5,3 +5,11 @@ class Controller(object):
     def __init__(self, view: View):
         self._view = view
         self._model = Model()
+
+
+    def getNmax(self):
+        return self._model.Nmax
+
+    def getTmax(self):
+        return self._model.Tmax
+
