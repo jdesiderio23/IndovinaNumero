@@ -15,8 +15,47 @@ class Controller(object):
         )
         self._view.update()
 
-    def play(self):
-        pass
+    def play(self, e):
+        tentativoStr = self._view._txtInTentativo.value
+        try:
+            tentativo = int(tentativoStr)
+        except ValueError:
+            self._view._lvOut.controls.append(
+                ft.Text("Errore. Devi inserire un valore numerico."))
+            self._view.update()
+            return
+        res = self._model.play(tentativo)
+
+        if res == 0:
+            """Ho vinto!"""
+            self._view._lvOut.controls.append(
+                ft.Text(f"Hai vinto! Il valore corretto era: {tentativo}",
+                        color = "green")
+            )
+            self._view.update()
+            return
+        elif res == 2:
+            """Non ho più vite"""
+            self._view._lvOut.controls.append(
+                ft.Text(f"Hai perso! Il valore corretto era {self._model.segreto}",
+                        color = "red")
+            )
+            self._view.update()
+            return
+        elif res == -1:
+            """Allora il segreto è più piccolo del tentativo"""
+            self._view._lvOut.controls.append(
+                ft.Text(f"Ritenta! Il numero segreto è più piccolo di {tentativo}")
+            )
+            self._view.update()
+            return
+        else:
+            """Allora il segreto è più grande del tentativo"""
+            self._view._lvOut.controls.append(
+                ft.Text(f"Ritenta! Il numero segreto è più grande di {tentativo}")
+            )
+            self._view.update()
+            return
 
     def getNmax(self):
         return self._model.Nmax
