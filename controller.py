@@ -37,7 +37,7 @@ class Controller(object):
         elif res == 2:
             """Non ho più vite"""
             self._view._lvOut.controls.append(
-                ft.Text(f"Hai perso! Il valore corretto era {self._model.segreto}",
+                ft.Text(f"Hai perso! Il valore corretto era: {self._model.segreto}",
                         color = "red")
             )
             self._view.update()
