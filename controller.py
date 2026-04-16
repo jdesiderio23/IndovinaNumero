@@ -6,6 +6,17 @@ class Controller(object):
         self._view = view
         self._model = Model()
 
+    def reset(self, e):
+        self._model.reset() # resetto lo stato del gioco lato modello!
+        self._view._txtT.value = self._model.T   # resetto interfaccia grafica-
+        self._view._lvOut.controls.clear()
+        self._view._lvOut.controls.append(
+            ft.Text("Inizia il gioco! Indovina a che numero sto pensando.")
+        )
+        self._view.update()
+
+    def play(self):
+        pass
 
     def getNmax(self):
         return self._model.Nmax

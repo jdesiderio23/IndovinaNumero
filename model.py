@@ -54,6 +54,10 @@ class Model(object):
     def Tmax(self):
         return self._Tmax
 
+    @property
+    def T(self):
+        return self._T
+
 if __name__ == "__main__":
     m = Model()
     m.reset()
